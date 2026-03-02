@@ -1,8 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Navigation from "@/components/Navigation";
 
 export const metadata: Metadata = {
-  title: "Wearable Tech Commerce",
+  title: "RingCommerce",
   description: "Health wearable e-commerce storefront — React + TypeScript + Next.js",
 };
 
@@ -13,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navigation />
+        <main className="main-content">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

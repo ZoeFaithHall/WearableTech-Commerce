@@ -88,9 +88,12 @@ export interface SubscriptionOption {
 
 // ── Checkout Domain ───────────────────────────────────────────────
 
+// lib/types/commerce.ts — ShippingAddress interface
+
 export interface ShippingAddress {
   firstName: string;
   lastName: string;
+  email: string;
   line1: string;
   line2?: string;
   city: string;
