@@ -3,27 +3,6 @@
 import ExercisePage from "@/components/ExercisePage";
 import CheckoutFormBefore from "@/exercises/06-refactor-checkout-form/CheckoutForm";
 import CheckoutFormAfter from "@/solutions/06-CheckoutForm.solution";
-import { mockProducts } from "@/lib/data/products";
-
-const mockCartItems = [
-  {
-    id: "cart-1",
-    product: mockProducts[0]!,
-    variant: mockProducts[0]!.variants[0]!,
-    quantity: 1,
-  },
-  {
-    id: "cart-2",
-    product: mockProducts[0]!,
-    variant: mockProducts[0]!.variants[3]!,
-    quantity: 1,
-  },
-];
-
-const mockSubtotal = mockCartItems.reduce(
-  (sum, item) => sum + item.variant.price * item.quantity,
-  0
-);
 
 export default function CheckoutFormExercise() {
   return (
@@ -31,6 +10,7 @@ export default function CheckoutFormExercise() {
       number="6"
       title="Checkout Form"
       time="20–25 min refactor"
+      layout="stacked"
       scenario="A shipping form that works but has type issues, subtle validation bugs, HTML semantics problems, and accessibility gaps. The kind of form that passes QA visually but fails screen reader and keyboard testing."
       changes={[
         {
@@ -90,15 +70,13 @@ export default function CheckoutFormExercise() {
       ]}
       beforeSlot={
         <div style={{ padding: 24, maxWidth: 360 }}>
-          <CheckoutFormBefore onSubmit={(data) => console.log("Before:", data)} />
+          <CheckoutFormBefore onSubmit={(data: any) => console.log("Before:", data)} />
         </div>
       }
       afterSlot={
-        <CheckoutFormAfter
-          onSubmit={(data) => console.log("After:", data)}
-          cartItems={mockCartItems}
-          subtotal={mockSubtotal}
-        />
+        <div style={{ padding: 24 }}>
+          <CheckoutFormAfter onSubmit={(data) => console.log("After:", data)} />
+        </div>
       }
     />
   );
